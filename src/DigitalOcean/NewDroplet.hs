@@ -52,24 +52,24 @@ instance FromJSON OuterDroplet where
 
 
 -- | create new Droplet
--- :{
+--
+-- @
 -- do
---   let d = NewDropletRequest {
---     ndname="hoge",
---     region="nyc3",
---     size="512mb",
---     image=12241402,
---     ndsshKeys=[],
---     backups = False,
---     ipv6=True,
---     userData = Nothing,
---     privateNetworking=False
---   }
---   tkn <- getEnv "DIGITAL_OCEAN_PERSONAL_ACCESS_TOKEN"
---   maybeNewDroplet <- newDroplet ( Authentication tkn) d
---   print $ show $ isJust maybeNewDroplet 
--- :}
--- "True"
+--     let d = NewDropletRequest {
+--         ndname="hoge",
+--         region="nyc3",
+--         size="512mb",
+--         image=12241402,
+--         ndsshKeys=[],
+--         backups = False,
+--         ipv6=True,
+--         userData = Nothing,
+--         privateNetworking=False
+--     }
+--     tkn <- getEnv "DIGITAL_OCEAN_PERSONAL_ACCESS_TOKEN"
+--     maybeNewDroplet <- newDroplet ( Authentication tkn) d
+-- @
+--
 newDroplet :: Authentication -> NewDropletRequest -> (MonadIO m) => m (Maybe Droplet)
 newDroplet a d = liftM toDroplet $ liftM decode (requestPost "droplets" a  d)
 

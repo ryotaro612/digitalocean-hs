@@ -52,13 +52,14 @@ instance FromJSON Droplet where
 
 
 -- | List all Droplets
---  :{
+--
+-- @
 -- do
---   tkn <- getEnv "DIGITAL_OCEAN_PERSONAL_ACCESS_TOKEN"
---   maybeDroplets <- droplets $ Authentication tkn
---   print $ show $ isJust maybeDroplets
--- :}
--- "True"
+--     tkn <- getEnv "DIGITAL_OCEAN_PERSONAL_ACCESS_TOKEN"
+--     maybeDroplets <- droplets $ Authentication tkn
+--     print $ show $ isJust maybeDroplets
+-- @
+-- 
 droplets :: Authentication -> (MonadIO m) => m (Maybe [Droplet])
 droplets a = liftM toList $ liftM decode (requestGet "droplets?page=1&per_page=100" a)
 

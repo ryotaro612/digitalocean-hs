@@ -41,13 +41,15 @@ instance FromJSON Account where
   parseJSON _ = mzero
 
 -- | Get User Information
--- >>> :{
+-- Example:
+--
+-- @
 -- do
---   tkn <- getEnv "DIGITAL_OCEAN_PERSONAL_ACCESS_TOKEN"
---   mayBeAcnt <- account $ Authentication tkn
---   print $ show $ isJust mayBeAcnt
--- :}
--- "True"
+--     tkn <- getEnv "DIGITAL_OCEAN_PERSONAL_ACCESS_TOKEN"
+--     mayBeAcnt <- account $ Authentication tkn
+--     print $ show $ isJust mayBeAcnt
+-- @
+--
 account :: Authentication -> (MonadIO m) => m (Maybe Account)
 account a = liftM toAccount $ liftM decode (requestGet "account" a)
 

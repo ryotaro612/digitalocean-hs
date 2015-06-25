@@ -35,13 +35,14 @@ instance FromJSON Sizes where
   parseJSON _          = mzero
 
 -- | List all Sizes
--- >>> :{
+-- 
+-- @
 -- do
---   tkn <- getEnv "DIGITAL_OCEAN_PERSONAL_ACCESS_TOKEN"
---   maybeSizes <- sizes $ Authentication tkn
---   print $ show $ isJust maybeSizes
--- :}
--- "True"
+--     tkn <- getEnv "DIGITAL_OCEAN_PERSONAL_ACCESS_TOKEN"
+--     maybeSizes <- sizes $ Authentication tkn
+--     print $ show $ isJust maybeSizes
+-- @
+-- 
 sizes :: Authentication -> (MonadIO m) => m (Maybe [Size])
 sizes  a = liftM toList $ liftM decode (requestGet "sizes" a)
 
