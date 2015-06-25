@@ -25,13 +25,14 @@ data Region = Region {
 
 
 -- | List all Regions
--- >>> :{
+--
+-- @
 -- do
---   tkn <- getEnv "DIGITAL_OCEAN_PERSONAL_ACCESS_TOKEN"
---   maybeRegions <- regions $ Authentication tkn
---   print $ show $ isJust maybeRegions
--- :}
--- "True"
+--     tkn <- getEnv "DIGITAL_OCEAN_PERSONAL_ACCESS_TOKEN"
+--     maybeRegions <- regions $ Authentication tkn
+--     print $ show $ isJust maybeRegions
+-- @
+--
 regions :: Authentication -> (MonadIO m) => m (Maybe [Region])
 regions a = liftM toList $ liftM decode (requestGet "regions" a)
 

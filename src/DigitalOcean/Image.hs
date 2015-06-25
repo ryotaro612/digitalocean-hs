@@ -32,24 +32,26 @@ data Image = Image {
 } deriving(Show, Read)
 
 -- | List all Images
--- >>> :{
+--
+-- @
 -- do
---   tkn <- getEnv "DIGITAL_OCEAN_PERSONAL_ACCESS_TOKEN"
---   maybeImages <- images $ Authentication tkn
---   print $ show $ isJust maybeImages
--- :}
--- "True"
+--     tkn <- getEnv "DIGITAL_OCEAN_PERSONAL_ACCESS_TOKEN"
+--     maybeImages <- images $ Authentication tkn
+--     print $ show $ isJust maybeImages
+-- @
+--
 images :: Authentication -> (MonadIO m) => m (Maybe [Image])
 images a = liftM toList $ liftM decode (requestGet "images?page=1&per_page=1" a)
 
 -- | List all Distribution Images
--- >>> :{
+--
+-- @
 -- do
---   tkn <- getEnv "DIGITAL_OCEAN_PERSONAL_ACCESS_TOKEN"
---   maybeImages <- listAllDistributionImages $ Authentication tkn
---   print $ show $ isJust maybeImages
--- :}
--- "True"
+--     tkn <- getEnv "DIGITAL_OCEAN_PERSONAL_ACCESS_TOKEN"
+--     maybeImages <- listAllDistributionImages $ Authentication tkn
+--     print $ show $ isJust maybeImages
+-- @
+--
 listAllDistributionImages :: Authentication -> (MonadIO m) => m (Maybe [Image])
 listAllDistributionImages a = liftM toList $ liftM decode (requestGet "images?page=1&per_page=100&type=distribution" a)
 

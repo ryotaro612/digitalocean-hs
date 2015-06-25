@@ -40,13 +40,14 @@ instance FromJSON SSHKey where
   parseJSON _ = mzero
 
 -- | List all Keys
--- >>> :{
+--
+-- @
 -- do
---   tkn <- getEnv "DIGITAL_OCEAN_PERSONAL_ACCESS_TOKEN"
---   maybeKeys <- listAllKeys $ Authentication tkn
---   print $ show $ isJust maybeKeys
--- :}
--- "True"
+--     tkn <- getEnv "DIGITAL_OCEAN_PERSONAL_ACCESS_TOKEN"
+--     maybeKeys <- listAllKeys $ Authentication tkn
+--     print $ show $ isJust maybeKeys
+-- @
+--
 listAllKeys :: Authentication -> (MonadIO m) => m (Maybe [SSHKey])
 listAllKeys a = liftM toList $ liftM decode (requestGet "account/keys" a)
 
