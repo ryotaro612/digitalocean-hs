@@ -5,7 +5,7 @@ module DigitalOcean.NewDroplet(
   NewDropletRequest(..)
 ) where
 
-import Control.Applicative ((<$>))
+import Control.Applicative()
 import Control.Monad (liftM, mzero)
 import Control.Monad.IO.Class
 import Data.Aeson ((.:),  FromJSON(..), Value(..), ToJSON(..), (.=), object, decode)

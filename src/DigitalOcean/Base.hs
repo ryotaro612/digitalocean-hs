@@ -8,8 +8,6 @@ module DigitalOcean.Base (
   requestPost
                          ) where
 
-import Control.Applicative ((<$>))
-
 import Control.Monad.IO.Class
 import Data.Aeson ( ToJSON, encode)
 import qualified Data.ByteString.Lazy.Char8 as BS

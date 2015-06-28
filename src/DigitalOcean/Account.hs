@@ -6,7 +6,7 @@ module DigitalOcean.Account (
   account
                             ) where
 
-import Control.Applicative ((<$>), (<*>))
+import Control.Applicative ()
 import Control.Monad (liftM, mzero)
 import Control.Monad.IO.Class
 import Data.Aeson ((.:), FromJSON(..), Value(..), decode)
