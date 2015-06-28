@@ -1,7 +1,8 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RankNTypes #-}
 module DigitalOcean.NewDroplet(
-  newDroplet
+  newDroplet,
+  NewDropletRequest(..)
 ) where
 
 import Control.Applicative ((<$>))
