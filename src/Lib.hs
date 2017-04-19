@@ -17,8 +17,10 @@ request :: Request
 request = "https://google.com"
 
 -- >>= :: m a -> (a -> m b) -> m b
+-- b :: IO(Response L8.ByteString)
 --b = httpLBS request
---aFun = httpLBS "http://google.com" >>= L8.putStrLn
+aFun :: IO()
+aFun = httpLBS "http://google.com" >>= L8.putStrLn
 
 
 
