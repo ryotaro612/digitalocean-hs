@@ -15,7 +15,7 @@ cabal-version:       >=1.10
 
 library
   hs-source-dirs:      src
-  exposed-modules:     DigitalOcean
+  exposed-modules:     Lib
   build-depends:       base >= 4.7 && < 5,
                        aeson,
                        text,
@@ -23,7 +23,8 @@ library
                        transformers ,
                        HTTP         ,
                        http-conduit,
-                       http-types
+                       http-types,
+                       hspec
   default-language:    Haskell2010
 
 executable digitalocean-hs-exe
