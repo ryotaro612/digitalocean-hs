@@ -23,8 +23,7 @@ library
                        transformers ,
                        HTTP         ,
                        http-conduit,
-                       http-types,
-                       hspec
+                       http-types
   default-language:    Haskell2010
 
 executable digitalocean-hs-exe
@@ -40,6 +39,8 @@ test-suite digitalocean-hs-test
   hs-source-dirs:      test
   main-is:             Spec.hs
   build-depends:       base,
+                       hspec,
+                       QuickCheck == 2.9.2,
 --                       aeson        >= 0.6  && < 0.9,
 --                       text         >= 0.10 && < 2,
 --                       bytestring   >= 0.10 && < 0.11,
