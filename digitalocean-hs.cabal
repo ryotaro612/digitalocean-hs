@@ -2,12 +2,12 @@ name:                digitalocean-hs
 version:             0.1.0.0
 -- synopsis:
 -- description:
-homepage:            https://github.com/githubuser/digitalocean-hs#readme
-license:             BSD3
+homepage:            https://github.com/nryotaro/digitalocean-hs#readme
+license:             MIT
 license-file:        LICENSE
-author:              Author name here
-maintainer:          example@example.com
-copyright:           2017 Author name here
+author:              Nakamura, Ryotaro
+maintainer:          nakamura.ryotaro.kzs@gmail.com
+copyright:           2017 Nakamura, Ryotaro
 category:            Web
 build-type:          Simple
 extra-source-files:  README.md
@@ -52,4 +52,4 @@ test-suite digitalocean-hs-test
 
 source-repository head
   type:     git
-  location: https://github.com/githubuser/digitalocean-hs
+  location: https://github.com/nryotaro/digitalocean-hs
